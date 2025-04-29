@@ -5,20 +5,27 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int [] nums = {3, 1, 5, 2, 1, 4};
-        insertionSort(nums);    // {1, 1, 2, 3, 4, 5}
+        bubbleSort(nums);    // {1, 1, 2, 3, 4, 5}
 
         System.out.println(Arrays.toString(nums));
+    }
+
+    public static void bubbleSort(int[] nums) {
+        bubbleSort(nums, true);
     }
 
     /**
      * bubbleSort method with 0(n^2)
      * @param nums the given int array
      */
-    public static void bubbleSort(int[] nums) {
+    public static void bubbleSort(int[] nums, boolean ascending) {
         for (int i = 0; i < nums.length - 1; i++) {
-            for (int j = i; j < nums.length - 1 - i; j++) {
-                if (nums[i] > nums[j + 1]) {
-                    int temp = nums[i];
+            for (int j = 0; j < nums.length - 1 - i; j++) {
+                boolean condition = ascending
+                        ? nums[j] > nums[j + 1]
+                        : nums[j] < nums[j + 1];
+                if (condition) {
+                    int temp = nums[j];
                     nums[j] = nums[j + 1];
                     nums[j + 1] = temp;
                 }
