@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int [] nums = {3, 1, 5, 2, 1, 4};
-        selectionSort(nums);    // {1, 1, 2, 3, 4, 5}
+        insertionSort(nums);    // {1, 1, 2, 3, 4, 5}
 
         System.out.println(Arrays.toString(nums));
     }
@@ -14,7 +14,7 @@ public class Main {
      * bubbleSort method with 0(n^2)
      * @param nums the given int array
      */
-    public static void bubblesort(int[] nums) {
+    public static void bubbleSort(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
             for (int j = i; j < nums.length - 1 - i; j++) {
                 if (nums[i] > nums[j + 1]) {
@@ -48,6 +48,31 @@ public class Main {
             int temp = nums[i];
             nums[i] = nums[minidx];
             nums[minidx] = temp;
+        }
+    }
+
+    /**
+     * Insertionsort (O(n^2))
+     * 3     15214
+     * 1     35214
+     * 13    5214
+     * 135   214
+     * 135   514
+     * 1235  14
+     * 1123  54
+     * 11234 5
+     *
+     * @param nums the given int array
+     */
+    public static void insertionSort(int[] nums) {
+        for (int i = 1; i < nums.length; i++) {
+            int key = nums[i];
+            int j = i - 1;
+            while (j >= 0 && nums[j] > key) {
+                nums[j + 1] = nums[j];
+                j--;
+            }
+            nums[j + 1] = key;
         }
     }
 }
