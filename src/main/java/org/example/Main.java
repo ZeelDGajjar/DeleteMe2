@@ -27,13 +27,27 @@ public class Main {
     }
 
     /**
-     * SelectionSort idea:
+     * SelectionSort method (O(n^2)):
      * 315214
      * 135214
-     * 125
+     * 115234
+     * 112534
+     * 112354
+     * 112345
      * @param nums the given int array
      */
     public static void selectionSort(int[] nums) {
-
+        for (int i = 0; i < nums.length - 1; i++) {
+            int minidx = i;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[minidx]) {
+                    minidx = j;
+                }
+            }
+            //swap nums[i] and nums[minIdx]
+            int temp = nums[i];
+            nums[i] = nums[minidx];
+            nums[minidx] = temp;
+        }
     }
 }
